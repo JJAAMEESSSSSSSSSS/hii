@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Letter</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffc0cb; /* Soft pink background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Envelope container styling */
+        .envelope {
+            position: relative;
+            width: 200px;
+            height: 120px;
+            background-color: #d4af37; /* Golden envelope color */
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.5s ease;
+        }
+
+        /* Top flap styling */
+        .envelope .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: #d4af37;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            transform-origin: top;
+            transition: transform 0.5s ease;
+        }
+
+        /* Open animation */
+        .envelope.opened .flap {
+            transform: rotateX(-180deg);
+        }
+
+        /* Letter container styling */
+        .letter {
+            display: none;
+            max-width: 600px;
+            background-color: #fffaf0; /* Light ivory color for paper */
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border: 1px solid #d4af37;
+            text-align: left;
+            line-height: 1.5;
+            font-size: 16px;
+        }
+
+        /* Show letter animation */
+        .envelope.opened + .letter {
+            display: block;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        /* Fade-in animation for letter content */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Envelope div with animation on click -->
+    <div class="envelope" onclick="openEnvelope()">
+        <div class="flap"></div>
+    </div>
+
+    <!-- Letter content revealed after envelope opens -->
+    <div class="letter" id="letterContent">
+        <p>Hi Mics,</p>
+        <p>Alam mo, sobra kita naa-appreciate sa mga small things na ginagawa mo—the things na nag-eeffort ka matuto. Yung small things na ginagawa mo make you cute talaga. Higit sa lahat, yung pagmamahal mo sa family lalo na si ate mo—the way na iniintindi mo siya at gusto mong magtrabaho para makatulong. I admire that character in you.</p>
+        <p>Also, yung pagiging madasalin mo reminds me of my mom. Every time na nagvivisit tayo sa simbahan, naaalala ko siya. Every Friday, andun kami to pray.</p>
+        <p>Kaya nung binigay ko yung flowers kanina, gusto ko lang sabihin na I like you for a long time na. Siguro alam mo na dahil nahahalata mo na rin. Ano man nararamdaman mo, platonic or as a friend, just let me express my admiration for you.</p>
+    </div>
+
+    <script>
+        // Function to open envelope and reveal letter content
+        function openEnvelope() {
+            const envelope = document.querySelector('.envelope');
+            envelope.classList.add('opened');
+        }
+    </script>
+</body>
+</html>
